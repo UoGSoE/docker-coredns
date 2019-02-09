@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  coredns:
+    image: "uogsoe/coredns"
+    build: ./
+    ports:
+      - "53:53/udp"
+    deploy:
+      mode: global
+      restart_policy:
+        window: 5s
+      update_config:
+        failure_action: "rollback"
+
+
